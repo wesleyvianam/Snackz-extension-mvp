@@ -12,6 +12,66 @@ body {
     padding: 15px 24px;
 }
 
+form h2 {
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+form button {
+    padding: 10px;
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: #4590BF;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form textarea {
+    border-color: #CCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+form label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form input {
+    cursor: pointer;
+}
+
+.toggle {
+    display: flex;
+}
+
+.toggle button {
+    background-color: #FFFFFF;
+    display: flex;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #4590BF;
+    margin-bottom: 10px;
+}
+
+.active {
+    background-color: #4590BF !important;
+    color: white;
+}
+
+.section-none {
+    display: none !important;
+}
+
 .pao-tipo {
     display: flex;
     justify-content: space-between;
