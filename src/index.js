@@ -4,20 +4,16 @@ let meuLanche = document.getElementById("meuLanche");
 let nome = localStorage.getItem('pessoa');  
 if (nome) {
   nome = JSON.parse(nome);
-  
   document.querySelector('#name').value = nome;
 }
 
-// Pega e envia lanche
+// Lanche
 meuLanche.addEventListener("submit", function(event) {
   event.preventDefault();
 
+  // Pega os dados do formulário
   let pao = document.querySelector('input[name="pao"]:checked');
-  if (!pao) {
-    alert("pão é obrigatório");
-  } else {
-    pao = pao.value;
-  }
+  !pao ? alert("pão é obrigatório") : pao = pao.value;
 
   let name = document.querySelector('#name');
   if (name) {
@@ -35,6 +31,7 @@ meuLanche.addEventListener("submit", function(event) {
     description = null;
   }
 
+  // URL padrão da API
   const url = "https://lunch-app.fly.dev/api/v1/orders"; // Substitua pelo URL do seu endpoint
 
   const data = {
@@ -44,8 +41,7 @@ meuLanche.addEventListener("submit", function(event) {
     description: description
   };
 
-  console.log(data);
-
+  // Salva na API
   fetch(url, {
     method: "POST",
     headers: {
@@ -61,12 +57,13 @@ meuLanche.addEventListener("submit", function(event) {
     console.error("Erro ao enviar solicitação:", error);
   });
 
+  // fecha o popup
   setTimeout(() => {
     window.close();
   }, 500);
 }); 
 
-// Pagina mostrando
+// Alterna entre Pedir e Pedidos
 const pedido = document.querySelector('#pedidos');
 const pedir = document.querySelector('#pedir');
 const sectionPedidos = document.querySelector('#section-pedidos');
