@@ -1,4 +1,8 @@
-let meuLanche = document.getElementById("meuLanche");
+// Executa Busca dos dados Na API
+getOrders(url);
+
+// URL padrão da API
+const url = "https://lunch-app.fly.dev/api/v1/orders"; // Substitua pelo URL do seu endpoint
 
 // Pega nome do Localstorage
 let nome = localStorage.getItem('pessoa');  
@@ -7,7 +11,8 @@ if (nome) {
   document.querySelector('#name').value = nome;
 }
 
-// Lanche
+// Salva lanche na API
+let meuLanche = document.getElementById("meuLanche");
 meuLanche.addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -31,9 +36,6 @@ meuLanche.addEventListener("submit", function(event) {
     description = null;
   }
 
-  // URL padrão da API
-  const url = "https://lunch-app.fly.dev/api/v1/orders"; // Substitua pelo URL do seu endpoint
-
   const data = {
     name: name,
     food: pao,
@@ -42,7 +44,7 @@ meuLanche.addEventListener("submit", function(event) {
   };
 
   // Salva na API
-  fazerRequisicao(url, data);
+  saveSnack(url, data);
 }); 
 
 // Alterna entre Pedir e Pedidos
@@ -73,7 +75,9 @@ pedido.addEventListener('click', () => {
 })
 
 // Envia dados para API
-function fazerRequisicao(url, data) {
+function saveSnack(url, data) {
+  disableButtonSubmit(true);
+  
   let loading = document.querySelector("#loading");
   show(loading);
 
@@ -92,6 +96,8 @@ function fazerRequisicao(url, data) {
       
       fechaPopup();      
     } else {
+      disableButtonSubmit(false);
+
       throw new Error('Erro na requisição');
     }
   })
@@ -99,7 +105,7 @@ function fazerRequisicao(url, data) {
 
     // Reenvia dados para a API
     setTimeout(() => {
-      fazerRequisicao(data);
+      saveSnack(url, data);
     }, 5000);
   });
 }
@@ -126,16 +132,78 @@ close.addEventListener("click", () => {
   fechaPopup();
 });
 
-// Get the dropdown button and content
+async function getSnacks(url) {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error("Erro na requisição");        
+    }
+
+    return await response.json();
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+function getOrders(url) {
+  // campos
+  const campoQtdPedido = document.querySelector('#qtdPedidos');
+  const campoNomeAcompanhamento = document.querySelector('#nomeAcompanhamento');
+  const campoQtdAcompanhamento = document.querySelector('#qtdAcompanhamento');
+  const campoQtdFrances = document.querySelector('#qtdFrances');
+  const campoQtdDoce = document.querySelector('#qtdDoce');
+  const campoQtdCreme = document.querySelector('#qtdCreme');
+
+  const response = getSnacks(url+"/results");
+  response.then(res => {
+    const acompanhamento = res.accompaniment;
+    const qtdMussarela = acompanhamento.Mussarela || 0;
+    const qtdMortadela = acompanhamento.Mortadela || 0;
+
+    const food = res.food;
+    const qtdFrances = food.Frances;
+    const qtdCreme = food.Creme;
+    const qtdDoce = food.Doce;
+    
+    // Total de pedidos
+    let totalPedidos = 0; 
+    for (let propriedade in food) {
+      if (food.hasOwnProperty(propriedade)) {
+        totalPedidos += food[propriedade];
+      }
+    }
+    
+    // Votação Mortadela X Mussarela
+    const qtdAcompanhamento = (qtdMortadela + qtdMussarela) * 2;
+    if (qtdMortadela > qtdMussarela) {
+      campoNomeAcompanhamento.innerText = "Mortadela"
+    } else {
+      campoNomeAcompanhamento.innerText = "Mussarela"
+    }
+
+    // Define Campos
+    campoQtdPedido.innerText = totalPedidos;
+    campoQtdAcompanhamento.innerText = qtdAcompanhamento;
+    campoQtdFrances.innerHTML = qtdFrances;
+    campoQtdDoce.innerText = qtdDoce;
+    campoQtdCreme.innerText = qtdCreme;
+  })
+}
+
+function disableButtonSubmit(value) {
+  const btnSubmit = document.querySelector("#btnSubmit");
+
+  btnSubmit.disabled = value;
+}
+
+// DROPDOWN
 let dropdownBtn = document.querySelector(".dropbtn");
 let dropdownContent = document.querySelector(".dropdown-content");
 
-// Toggle the dropdown content when the button is clicked
 dropdownBtn.addEventListener("click", function() {
   dropdownContent.classList.toggle("show");
 });
 
-// Close the dropdown when clicking outside of it
 window.addEventListener("click", function(event) {
   if (!event.target.matches(".dropbtn")) {
     if (dropdownContent.classList.contains("show")) {

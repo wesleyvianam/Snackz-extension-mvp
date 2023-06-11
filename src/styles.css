@@ -131,11 +131,11 @@ textarea:focus, input:focus, select:focus {
 }
 
 #loading img {
-    width: 30px !important;
+    width: 60px !important;
     position: absolute;
-    top: 51vw;
-    left: 35vw;
-    background: #4590bfa1;
+    top: 45vw;
+    left: 36vw;
+    background: #FFFFFF75;
     border-radius: 30px;
     padding: 5px;
 }

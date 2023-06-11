@@ -8,8 +8,8 @@
     <title>Lanchinho Dzenvolve</title>
 </head>
 <body>
-    <div id="loading" class="hide">
-        <img src="/src/image/three-dots.svg" alt="loading" />
+    <div id="loading" class="hde">
+        <img src="/src/image/tail-spin.svg" alt="loading" />
     </div>
     <div>
         <nav class="d-flex justify-content-between">
@@ -19,7 +19,8 @@
                 </button>
                 <div class="dropdown-content">
                   <a id="pedir" href="#">Pedir</a>
-                  <a id="pedidos" href="#">Pedidos</a>
+                  <a id="pedidos" href="#">Pedido</a>
+                  <a id="pedidos" href="https://lunch-app.fly.dev/" target="_blank">Pedidos</a>
                 </div>
             </div>
 
@@ -36,23 +37,23 @@
                 <input type="text" id="name" name="name" value="" class="form-control mb-3" placeholder="Nome:">
 
                 <h2>Escolha seu Pão:</h2>
-                <input type="radio" id="frances" name="pao" value="FRANCES">
+                <input type="radio" id="frances" name="pao" value="Frances">
                 <label class="checkmark" for="frances">Frances</label> <br>
                
-                <input type="radio" id="doce" name="pao" value="DOCE">
+                <input type="radio" id="doce" name="pao" value="Doce">
                 <label class="checkmark" for="doce">Doce</label> <br>
               
-                <input type="radio" id="creme" name="pao" value="CREME">
+                <input type="radio" id="creme" name="pao" value="Creme">
                 <label class="checkmark" for="creme">C/ Creme</label>
     
                 <br><br>
     
                 <h2>Acompanhamento de preferência:</h2>
-                <input type="radio" id="mussarela" name="acompanhamento" value="MUSSARELA">
+                <input type="radio" id="mussarela" name="acompanhamento" value="Mussarela">
                 <label class="checkmark" for="mussarela">Mussarela</label><br>
                 
-                <input type="radio" id="mortandela" name="acompanhamento" value="MORTANDELA">
-                <label class="checkmark" for="mortandela">Mortandela</label><br><br>
+                <input type="radio" id="mortandela" name="acompanhamento" value="Mortadela">
+                <label class="checkmark" for="mortandela">Mortadela</label><br><br>
     
                 <label for="description" class="mb-3 w-100">
                     <h2 class="pb-1">Adicionar uma descrição:</h2>
@@ -61,14 +62,14 @@
                 
                 <div class="btns">
                     <a href="#" id="close" onclick="fechaPopup()">Hoje não</a>
-                    <button type="submit">Enviar</button>
+                    <button id="btnSubmit" type="submit">Enviar</button>
                 </div>
             </div>
           </form>
 
           <div class="section-none" id="section-pedidos">
             <div class="pt-2 d-flex">
-                <span class="pb-1 pe-1">Número de pedidos:</span> 
+                <span class="pb-1 pe-1">Total de pedidos:</span> 
                 <strong id="qtdPedidos">0</strong>
             </div>
             
@@ -76,23 +77,23 @@
                 <li class="list-group-item text-center title-list">Pedido</li>
                 <li class="list-group-item d-flex justify-content-between">
                     <div>Francês</div>
-                    <div>5</div>
+                    <div id="qtdFrances">0</div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <div>Doce</div>
-                    <div>2</div>
+                    <div id="qtdDoce">0</div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <div>Creme</div>
-                    <div>1</div>
+                    <div id="qtdCreme">0</div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
-                    <div>Mussarela</div>
-                    <div>12</div>
+                    <div id="nomeAcompanhamento">Mussarela</div>
+                    <div id="qtdAcompanhamento">12</div>
                 </li>
             </ul>
 
-            <ul class="list-group">
+            <!-- <ul class="list-group">
                 <li class="list-group-item text-center title-list">Descrições</li>
                 <li class="list-group-item d-flex justify-content-between">
                     <div>Leandro</div>
@@ -102,7 +103,7 @@
                     <div>Leonardo</div>
                     <div>Com açucar</div>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 
