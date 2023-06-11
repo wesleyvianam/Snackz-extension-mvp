@@ -8,16 +8,32 @@
     <title>Lanchinho Dzenvolve</title>
 </head>
 <body>
+    <div id="loading" class="hide">
+        <img src="/src/image/three-dots.svg" alt="loading" />
+    </div>
     <div>
-        <div class="toggle">
-            <button class="active" id="pedir">Pedir</button>
-            <button id="pedidos">Pedido do dia</button>
-        </div>
+        <nav class="d-flex justify-content-between">
+            <div class="dropdown">
+                <button class="dropbtn">        
+                    <img src="/src/image/burger.svg" alt="botão dropdown" />
+                </button>
+                <div class="dropdown-content">
+                  <a id="pedir" href="#">Pedir</a>
+                  <a id="pedidos" href="#">Pedidos</a>
+                </div>
+            </div>
+
+            <h1 id="title">Novo Pedido</h1>
+            
+            <div>
+                <img src="/src/image/favicon30.png" alt="Logo lanches Dzenvolve" />
+            </div>
+        </nav>
 
         <form id="meuLanche">
             <div>
-                <label class="form-control-label" for="frances">Nome:</label> <br>
-                <input type="text" id="name" name="name" value="" class="form-control mb-3">
+                <label class="form-control-label" for="name"></label> <br>
+                <input type="text" id="name" name="name" value="" class="form-control mb-3" placeholder="Nome:">
 
                 <h2>Escolha seu Pão:</h2>
                 <input type="radio" id="frances" name="pao" value="FRANCES">
@@ -31,26 +47,33 @@
     
                 <br><br>
     
-                <h2>Escolha seu Acompanhamento:</h2>
+                <h2>Acompanhamento de preferência:</h2>
                 <input type="radio" id="mussarela" name="acompanhamento" value="MUSSARELA">
                 <label class="checkmark" for="mussarela">Mussarela</label><br>
                 
                 <input type="radio" id="mortandela" name="acompanhamento" value="MORTANDELA">
                 <label class="checkmark" for="mortandela">Mortandela</label><br><br>
     
-                <h2>Adicionar uma descrição:</h2>
-                <textarea rows="4" style="width: 100%;" id="description" name="description"></textarea> <br>
+                <label for="description" class="mb-3 w-100">
+                    <h2 class="pb-1">Adicionar uma descrição:</h2>
+                    <input type="text" id="description" name="description" class="form-control">
+                </label>
                 
-                <button type="submit">Enviar</button>
+                <div class="btns">
+                    <a href="#" id="close" onclick="fechaPopup()">Hoje não</a>
+                    <button type="submit">Enviar</button>
+                </div>
             </div>
           </form>
 
           <div class="section-none" id="section-pedidos">
-            <h1>Resultado do pedido</h1>
-            <div>Numero de pedidos: 6</div>
+            <div class="pt-2 d-flex">
+                <span class="pb-1 pe-1">Número de pedidos:</span> 
+                <strong id="qtdPedidos">0</strong>
+            </div>
             
             <ul class="list-group mb-3">
-                <li class="list-group-item text-center">Pedido</li>
+                <li class="list-group-item text-center title-list">Pedido</li>
                 <li class="list-group-item d-flex justify-content-between">
                     <div>Francês</div>
                     <div>5</div>
@@ -70,7 +93,7 @@
             </ul>
 
             <ul class="list-group">
-                <li class="list-group-item text-center">Comentários</li>
+                <li class="list-group-item text-center title-list">Descrições</li>
                 <li class="list-group-item d-flex justify-content-between">
                     <div>Leandro</div>
                     <div>Com raspas de coco</div>
@@ -80,9 +103,10 @@
                     <div>Com açucar</div>
                 </li>
             </ul>
-          </div>
+        </div>
     </div>
 
+    </script>    
     <script src="/src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

@@ -9,23 +9,44 @@
 
 body {
     width: 400px;
-    padding: 15px 24px;
+    padding: 22px 20px;
 }
 
 form h2 {
     font-size: 18px;
     margin-bottom: 0px;
+    font-weight: 700;
+    color: #4590BF;
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 form button {
     padding: 10px;
-    width: 100%;
     color: white;
+    width: 48%;
     border: none;
     background-color: #4590BF;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 35px;
+}
+
+form #close {
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    color: #4590BF;
+    width: 48%;
+    background-color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #2078af;
+    border-radius: 35px;
 }
 
 form textarea {
@@ -65,7 +86,7 @@ form input {
 
 .active {
     background-color: #4590BF !important;
-    color: white;
+    color: white !important;
 }
 
 .section-none {
@@ -98,4 +119,74 @@ textarea:focus, input:focus, select:focus {
     box-shadow: 0 0 0 0;
     border: 1px solid #b9b2b2;
     outline: 0;
+}
+
+.hide {
+    display: none;
+}
+
+#loading {
+    width: 30px !important;
+    position: relative;
+}
+
+#loading img {
+    width: 30px !important;
+    position: absolute;
+    top: 51vw;
+    left: 35vw;
+    background: #4590bfa1;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropbtn {
+    background-color: #2078af;
+    color: white;
+    padding: 5px 3px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #096eac55;
+    color: white;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#title {
+    font-weight: 700;
+    color: #4590BF;
+}
+
+.title-list {
+    font-weight: 700;
+    color: #4590BF;
 }
