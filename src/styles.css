@@ -125,12 +125,12 @@ textarea:focus, input:focus, select:focus {
     display: none;
 }
 
-#loading {
-    width: 30px !important;
+#loading, #success {
+    width: 60px !important;
     position: relative;
 }
 
-#loading img {
+#loading img, svg {
     width: 60px !important;
     position: absolute;
     top: 45vw;

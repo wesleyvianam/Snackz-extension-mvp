@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/src/styles.css"/>
+    <link rel="stylesheet" href="/src/check-styles.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <title>Lanchinho Dzenvolve</title>
 </head>
 <body>
-    <div id="loading" class="hde">
+    <div id="loading" class="hide">
         <img src="/src/image/tail-spin.svg" alt="loading" />
     </div>
+
+    <div id="success" class="hide"> 
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/> <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+    </div>
+
     <div>
         <nav class="d-flex justify-content-between">
             <div class="dropdown">
@@ -38,22 +44,22 @@
 
                 <h2>Escolha seu Pão:</h2>
                 <input type="radio" id="frances" name="pao" value="Frances">
-                <label class="checkmark" for="frances">Frances</label> <br>
+                <label class="" for="frances">Frances</label> <br>
                
                 <input type="radio" id="doce" name="pao" value="Doce">
-                <label class="checkmark" for="doce">Doce</label> <br>
+                <label class="" for="doce">Doce</label> <br>
               
                 <input type="radio" id="creme" name="pao" value="Creme">
-                <label class="checkmark" for="creme">C/ Creme</label>
+                <label class="" for="creme">C/ Creme</label>
     
                 <br><br>
     
                 <h2>Acompanhamento de preferência:</h2>
                 <input type="radio" id="mussarela" name="acompanhamento" value="Mussarela">
-                <label class="checkmark" for="mussarela">Mussarela</label><br>
+                <label class="" for="mussarela">Mussarela</label><br>
                 
                 <input type="radio" id="mortandela" name="acompanhamento" value="Mortadela">
-                <label class="checkmark" for="mortandela">Mortadela</label><br><br>
+                <label class="" for="mortandela">Mortadela</label><br><br>
     
                 <label for="description" class="mb-3 w-100">
                     <h2 class="pb-1">Adicionar uma descrição:</h2>

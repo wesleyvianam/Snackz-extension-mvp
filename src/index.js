@@ -1,8 +1,8 @@
+// URL padrão da API
+const url = "https://lunch-app.fly.dev/api/v1/orders";
+
 // Executa Busca dos dados Na API
 getOrders(url);
-
-// URL padrão da API
-const url = "https://lunch-app.fly.dev/api/v1/orders"; // Substitua pelo URL do seu endpoint
 
 // Pega nome do Localstorage
 let nome = localStorage.getItem('pessoa');  
@@ -79,6 +79,7 @@ function saveSnack(url, data) {
   disableButtonSubmit(true);
   
   let loading = document.querySelector("#loading");
+  let success = document.querySelector("#success");
   show(loading);
 
   fetch(url, {
@@ -90,11 +91,15 @@ function saveSnack(url, data) {
   })
   .then(response => {
     if (response.ok) {
+      
       setTimeout(() => {
         hide(loading);
-      }, 5000);
-      
-      fechaPopup();      
+        show(success);
+      }, 2000);     
+
+      setTimeout(() => {
+        fechaPopup();      
+      }, 3000);
     } else {
       disableButtonSubmit(false);
 
@@ -161,9 +166,9 @@ function getOrders(url) {
     const qtdMortadela = acompanhamento.Mortadela || 0;
 
     const food = res.food;
-    const qtdFrances = food.Frances;
-    const qtdCreme = food.Creme;
-    const qtdDoce = food.Doce;
+    const qtdFrances = food.Frances || 0;
+    const qtdCreme = food.Creme || 0;
+    const qtdDoce = food.Doce || 0;
     
     // Total de pedidos
     let totalPedidos = 0; 
