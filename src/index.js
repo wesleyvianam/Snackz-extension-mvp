@@ -95,11 +95,11 @@ function saveSnack(url, data) {
       setTimeout(() => {
         hide(loading);
         show(success);
-      }, 2000);     
+      }, 1000);     
 
       setTimeout(() => {
         fechaPopup();      
-      }, 3000);
+      }, 1500);
     } else {
       disableButtonSubmit(false);
 
