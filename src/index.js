@@ -5,15 +5,15 @@ const url = "https://lunch-app.fly.dev/api/v1/orders";
 getOrders(url);
 
 // Pega nome do Localstorage
-let nome = localStorage.getItem('pessoa');  
-if (nome) {
-  nome = JSON.parse(nome);
+let hasNameSaved = localStorage.getItem('pessoa');  
+if (hasNameSaved) {
+  nome = JSON.parse(hasNameSaved);
   document.querySelector('#name').value = nome;
 }
 
 // Salva lanche na API
-let meuLanche = document.getElementById("meuLanche");
-meuLanche.addEventListener("submit", function(event) {
+let snack = document.getElementById("meuLanche");
+snack.addEventListener("submit", function(event) {
   event.preventDefault();
 
   // Pega os dados do formulário
@@ -35,6 +35,7 @@ meuLanche.addEventListener("submit", function(event) {
   if (description.trim() === "") {
     description = null;
   }
+
 
   const data = {
     name: name,
@@ -58,7 +59,7 @@ pedir.addEventListener('click', () => {
   pedir.classList.add('active');
   pedido.classList.remove('active');
 
-  meuLanche.classList.remove('section-none');
+  snack.classList.remove('section-none');
   sectionPedidos.classList.add('section-none');
 
   title.innerText = "Novo Pedido";
@@ -69,7 +70,7 @@ pedido.addEventListener('click', () => {
   pedir.classList.remove('active');
 
   sectionPedidos.classList.remove('section-none');
-  meuLanche.classList.add('section-none');
+  snack.classList.add('section-none');
 
   title.innerText = "Pedidos";
 })
@@ -180,11 +181,9 @@ function getOrders(url) {
     
     // Votação Mortadela X Mussarela
     const qtdAcompanhamento = (qtdMortadela + qtdMussarela) * 2;
-    if (qtdMortadela > qtdMussarela) {
-      campoNomeAcompanhamento.innerText = "Mortadela"
-    } else {
-      campoNomeAcompanhamento.innerText = "Mussarela"
-    }
+    qtdMortadela > qtdMussarela
+      ? campoNomeAcompanhamento.innerText = "Mortadela"
+      : campoNomeAcompanhamento.innerText = "Mussarela";
 
     // Define Campos
     campoQtdPedido.innerText = totalPedidos;
@@ -200,19 +199,3 @@ function disableButtonSubmit(value) {
 
   btnSubmit.disabled = value;
 }
-
-// DROPDOWN
-let dropdownBtn = document.querySelector(".dropbtn");
-let dropdownContent = document.querySelector(".dropdown-content");
-
-dropdownBtn.addEventListener("click", function() {
-  dropdownContent.classList.toggle("show");
-});
-
-window.addEventListener("click", function(event) {
-  if (!event.target.matches(".dropbtn")) {
-    if (dropdownContent.classList.contains("show")) {
-      dropdownContent.classList.remove("show");
-    }
-  }
-});
