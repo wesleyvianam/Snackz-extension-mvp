@@ -132,12 +132,18 @@ textarea:focus, input:focus, select:focus {
 
 #loading img, svg {
     width: 60px !important;
+    height: 60px !important;
     position: absolute;
     top: 45vw;
     left: 36vw;
     background: #FFFFFF75;
     border-radius: 30px;
     padding: 5px;
+}
+
+#loading img {
+    width: 75px !important;
+    height: 75px !important;
 }
 
 .dropdown {
