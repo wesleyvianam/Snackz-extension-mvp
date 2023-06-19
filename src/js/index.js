@@ -1,5 +1,5 @@
 // URL padrão da API
-const url = "https://lunch-app.fly.dev/api/v1/orders";
+const url = "https://snack-dz.fly.dev/api/v1/orders";
 
 // Executa Busca dos dados Na API
 getOrders(url);
@@ -199,3 +199,44 @@ function disableButtonSubmit(value) {
 
   btnSubmit.disabled = value;
 }
+
+async function getDescription(url) {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error("Erro na requisição");        
+    }
+
+    return await response.json();
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+function setDescription(url) {
+  const listaObs = document.querySelector("#observacao");
+
+  const response = getDescription(url + "/descriptions");
+  response.then(res => {
+    res.forEach(index => {
+      if (index.description != null) {
+        const li = document.createElement('li');
+        const divName = document.createElement('div');
+        const divDescri = document.createElement('div');
+
+        li.classList.add('list-group-item')
+        divName.classList.add('name')
+        divDescri.classList.add('description') 
+        
+        divName.textContent = index.name + ":";
+        divDescri.textContent = index.description;
+        
+        li.appendChild(divName);
+        li.appendChild(divDescri);
+        listaObs.appendChild(li);
+      } 
+    })
+  })
+}
+
+setDescription(url);
