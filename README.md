@@ -1,4 +1,4 @@
-# Snackz-extension
+# Snackz
 A extensão Snackz foi criada na necessidade de tornar os pedidos de lanche da tarde em minha equipe mais ágil e automatizado, assim evitando erros e atrasos.
 
 # Tecnologias Utilizadas:
